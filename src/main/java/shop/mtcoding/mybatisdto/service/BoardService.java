@@ -2,10 +2,10 @@ package shop.mtcoding.mybatisdto.service;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import shop.mtcoding.mybatisdto.dto.BoardDetailOutDto;
-import shop.mtcoding.mybatisdto.dto.BoardDetailOutDto2;
-import shop.mtcoding.mybatisdto.dto.BoardJoinUserDto;
-import shop.mtcoding.mybatisdto.dto.BoardJoinUserDto2;
+import shop.mtcoding.mybatisdto.dto.BoardJoinUserDtoV1Flattern;
+import shop.mtcoding.mybatisdto.dto.BoardJoinUserDtoV1;
+import shop.mtcoding.mybatisdto.dto.BoardJoinUserDtoV2;
+import shop.mtcoding.mybatisdto.dto.BoardJoinUserDtoV3;
 import shop.mtcoding.mybatisdto.model.board.BoardRepository;
 
 @RequiredArgsConstructor
@@ -14,24 +14,24 @@ public class BoardService {
 
     private final BoardRepository boardRepository;
 
-    public BoardDetailOutDto2 게시글상세보기(Integer id) {
-        BoardDetailOutDto boardDetailOutDto = boardRepository.findByIdJoinUser(id);
-        System.out.println("디버그 : "+boardDetailOutDto);
-        BoardDetailOutDto2 boardDetailOutDto2 =
-                new BoardDetailOutDto2(boardDetailOutDto);
-        System.out.println("디버그 : "+boardDetailOutDto2);
-        return boardDetailOutDto2;
+    public BoardJoinUserDtoV1 게시글상세보기V1(Integer id) {
+        BoardJoinUserDtoV1Flattern flatDto = boardRepository.findByIdJoinUserV1(id);
+        System.out.println("디버그 : "+flatDto);
+        BoardJoinUserDtoV1 ormDto =
+                new BoardJoinUserDtoV1(flatDto);
+        System.out.println("디버그 : "+ormDto);
+        return ormDto;
     }
 
-    public BoardJoinUserDto 게시글상세보기2(Integer id) {
-        BoardJoinUserDto dto = boardRepository.findByIdJoinUser2(id);
-        System.out.println("디버그 : "+dto);
-        return dto;
+    public BoardJoinUserDtoV2 게시글상세보기V2(Integer id) {
+        BoardJoinUserDtoV2 ormDto = boardRepository.findByIdJoinUserV2(id);
+        System.out.println("디버그 : "+ormDto);
+        return ormDto;
     }
 
-    public BoardJoinUserDto2 게시글상세보기3(Integer id) {
-        BoardJoinUserDto2 dto = boardRepository.findByIdJoinUser3(id);
-        System.out.println("디버그 : "+dto);
-        return dto;
+    public BoardJoinUserDtoV3 게시글상세보기V3(Integer id) {
+        BoardJoinUserDtoV3 ormDto = boardRepository.findByIdJoinUserV3(id);
+        System.out.println("디버그 : "+ormDto);
+        return ormDto;
     }
 }

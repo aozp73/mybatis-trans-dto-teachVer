@@ -7,14 +7,14 @@ import lombok.ToString;
 import java.sql.Timestamp;
 
 @Getter @Setter @ToString
-public class BoardDetailOutDto2 {
+public class BoardJoinUserDtoV1 {
     private Integer id;
     private String title;
     private String content;
     private UserDto user;
     private Timestamp createdAt;
 
-    public BoardDetailOutDto2(BoardDetailOutDto board) {
+    public BoardJoinUserDtoV1(BoardJoinUserDtoV1Flattern board) {
         this.id = board.getId();
         this.title = board.getTitle();
         this.content = board.getContent();
